@@ -1,0 +1,24 @@
+{% extends 'base_layout.html'%}
+{% load static from staticfiles %}
+{%block content%}
+<link rel= "stylesheet" href= "{%static 'css/login.css'%}" type="text/css">
+<style>
+
+  .signuplink {
+    padding-top:0.7%;
+  }
+  </style>
+<title>Login</title>
+  <div style="color: black;">
+    <div>
+    <h1>Login</h1>
+    <p>This is the page where you log in</p>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Login</button>
+    </form>
+  </div>
+  <div style="clear: both;"class="signuplink"><a href="/signup/">Don't have an account yet? Sign up here!</a></div>
+  </div>
+{%endblock%}

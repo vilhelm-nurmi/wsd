@@ -1,0 +1,52 @@
+{% extends 'base_layout.html'%}
+{% load static from staticfiles %}
+{% load static %}
+{%block content%}
+<link rel= "stylesheet" href= "{%static 'css/game_view.css'%}" type="text/css">
+
+<div class="content">
+  <div class="gamebox">
+    <h1>{{game.title}}</h1>
+    <p>Description:</p>
+    <div class="description"><p>{{game.description}}</p></div>
+    <p>Price:{{game.price}}€</p>
+  </div>
+
+  <img class ="img-fluid max-width 100px height 100px;" src="{% get_media_prefix %}{{game.game_img}}">
+</div>
+  {% if user.is_authenticated %}
+  {% if game in request.user.purchased_games.all %}
+  <input type="button" class="btn btn-dark"onclick="location.href= '{{game.slug}}/play'" value="Play"></input>
+  {% elif request.user.type == "D" %}
+    <p>Not your game, and developers cannot purchase games.</p>
+  {% else %}
+
+    <form action="http://payments.webcourse.niksula.hut.fi/pay/" method="POST">
+        <input type="hidden" name="pid" value="{{pid}}" />
+        <input type="hidden" name="sid" value="{{sid}}" />
+        <input type="hidden" name="checksum" value="{{checksum}}" />
+
+        <input type="hidden" name="success_url"
+                value="{{host}}/shop/success" />
+        <input type="hidden" name="cancel_url"
+                value="{{host}}/shop/cancel" />
+        <input type="hidden" name="error_url"
+                value="{{host}}/shop/error" />
+        <input type="hidden" name="checksum"
+                value="{{checksum}}" />
+
+
+        <label class="pay-me" for="id_amount">Take my Moneys!</label>
+        <input type="hidden" id="id_amount" name="amount" value="{{game.price}}"/>
+        <input type="submit" class="btn btn-dark "value="Do it!"></input>
+    </form>
+
+      {% endif %}
+    {% else %}
+
+      <h3>Please sign up or log in before playing or purchasing games</h3>
+      <input type="button" onclick="location.href='/signup/';" value="Signup"/>
+      <input type="button" onclick="location.href='/login/';" value="Login" />
+    {% endif %}
+
+{%endblock%}

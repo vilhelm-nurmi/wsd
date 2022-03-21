@@ -1,0 +1,87 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel= "stylesheet" href= "{%static 'css/base_layout.css'%}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+<body>
+  <div class = "main-nav">
+    <link rel= "stylesheet" href= "{%static 'css/home.css'%}">
+      <nav class="navbar navbar-expand-lg bg-#006666 fixed-top">
+        <a class="navbar-brand" href={% url 'home'%} {% if request.path == '/' %} class="active"{% endif %}>Miniclick</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href={% url 'toplist'%} {% if request.path == '/toplist/'%} class="active"{% endif %}>Toplist<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href={% url 'complaints'%} {% if request.path == '/complaints/'%} class="active"{% endif %}>Complaints</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href={% url 'games'%} {% if request.path == '/games/list'%} class="active"{% endif %}>Games</a>
+            </li>
+            {% if user.is_authenticated%}
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href={% url 'social:begin' 'google-oauth2'%}>Login via google</a>
+            </li>
+            {% endif %}
+
+          </ul>
+        </div>
+         <div class="search-container">
+          {% if user.is_authenticated %}
+         <button class= "btn btn-dark my-2 my-sm-0 float-left" onclick="location.href='/profile/{{request.user.username}}';">{{ request.user.username }}</a>
+          {% else %}
+         <button class= "btn btn-dark my-2 my-sm-0 float-left" onclick="location.href='/login/';">Log in</button>
+          {% endif %}
+          {% if user.is_authenticated %}
+          <form action="/logout/" method="POST">
+            {%csrf_token%}
+            <button class= "btn btn-dark my-2 my-sm-0 float-left" type="submit">Log out</button>
+          </form>
+            {% else %}
+            <button class= "btn btn-dark my-2 my-sm-0 float-left" onclick="location.href = '/signup';">Sign up</button>
+            {% endif %}
+            <form action= '/search/' method="GET" class="form-inline my-2 my-lg-0">
+              <input type="text" placeholder="Search" name="search" value = "{{request.GET.search}}" class="form-control mr-sm-2">
+              <button type="submit" class="btn btn-dark my-2 my-sm-0">Search</button>
+            </form>
+          </div>
+      </div>
+      <div class="wrapper">
+        {%block content%}
+
+        {%endblock%}
+
+        <div class="push"></div>
+      </div>
+
+
+      </div>
+
+  <footer class="bd-footer text-muted font-small unique-color-dark sticky-bottom ">
+    <ul class="bd-footer text-center">
+      <li class="list-inline-item">
+        <h5 class="mb-1">Register for free</h5>
+      </li>
+      <li class="list-inline-item">
+        <a href='/signup' class="btn btn-outline-white btn-rounded">Sign up!</a>
+      </li>
+    </ul>
+    <div class="footer-copyright text-center py-2">© 2019 Copyright:
+      <a> The Founders of Miniclick</a>
+    </div>
+  </footer>
+</body>
+</html>

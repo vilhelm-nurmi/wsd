@@ -1,0 +1,72 @@
+*{
+font-family: "Avenir Next", Times, sans-serif;
+}
+
+.main-nav{
+  height:30pt;
+  background:#f5f5dc;
+  padding:2pt;
+}
+
+.navbar {
+
+overflow: hidden;
+background-color: #006666;
+height: 50px;
+}
+.navbar a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 12px 20px;
+  text-decoration: none;
+  width:auto;
+}
+.navbar a:hover {
+  background-color: #FFFFCC;
+  border-radius: 5pt;
+}
+.navbar a.active {
+background-color: #FFFFCC;
+color: Brown;
+border-radius: 5pt;
+
+}
+.navbar a.active_user{
+background-color: #FFFFCC;
+border-radius: 5pt;
+color: Brown;
+}
+
+.navbar .search-container button {
+float: right;
+margin-right: 5pt;
+cursor: pointer;
+}
+body{
+  background: #f5f5dc;
+}
+
+.bd-footer{
+  background: #006666;
+}
+html,body{
+  height: 100%;
+  margin: 0;
+}
+.wrapper{
+  padding:10px;
+  background: #dfe3ee;
+  border-radius:5pt;
+  margin-bottom: 5vh;
+  margin-top:5vh;
+  margin-left: 20px;
+  margin-right:20px;
+}
+.push,
+.footer
+{
+  clear:both;
+  max-height:5vh;
+}

@@ -1,0 +1,21 @@
+{% extends 'base_layout.html'%}
+{% load static from staticfiles %}
+{% load static %}
+{%block content%}
+<link rel= "stylesheet" href= "{%static 'css/games.css'%}" type="text/css">
+  <div class="content">
+    <div class="gamewrap">
+    <title>Games</title>
+    <div class="games">
+      {% for game in games%}
+      <div class="game" onclick="location.href='/games/'+'{{game.slug}}';">
+        &nbsp;
+      <h1>{{game.title}}</h1><br>
+      <img class ="imgthumbnail" src="{% get_media_prefix %}{{game.game_img}}">
+      <p>{{game.description}}</p>
+      </div>
+      {%endfor %}
+    </div>
+    </div>
+    </div>
+{%endblock%}

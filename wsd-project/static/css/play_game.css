@@ -1,0 +1,17 @@
+
+.gamebox{
+  float:left;
+  width:70%;
+  height:60%;
+}
+
+.highscorebox{
+  float:left;
+  width:200px;
+  height:auto;
+}
+.savedgamesbox {
+  float:left;
+  width:200px;
+  height:auto;
+}

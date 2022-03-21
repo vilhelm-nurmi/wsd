@@ -1,0 +1,22 @@
+{% extends 'base_layout.html'%}
+{% load static from staticfiles %}
+{% load static %}
+
+{%block content%}
+<div class="container">
+<title>Edit {{game.title}}</title>
+
+<div class="info" style="float:right;">
+<p>Current image resized to 300*300px</p>
+<img src="{% get_media_prefix %}{{game.game_img}}" width=300px height=300px>
+</div>
+<div class="edit">
+  <h2> Please update the information in this form</h2>
+<form method="post" enctype=multipart/form-data style="float:left;">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Edit game</button>
+</form>
+</div>
+</div>
+{%endblock%}

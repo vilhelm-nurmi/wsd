@@ -1,0 +1,25 @@
+.game {
+  float:left;
+  height: 20%;
+  width: 42%;
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-bottom: 3%;
+  background-blend-mode: darken;
+  background-color: rgba(0, 0, 0, 0.4);
+  background-clip:content-box;
+}
+.head-search{
+  text-align:center;
+}
+h3{
+  color: rgba(180, 180, 180, 1);
+  text-align:center;
+}
+p{
+  color: rgba(180, 180, 180, 1);
+  margin-left: 18px;
+}
+.game:hover{
+  background-color: #eeeff4;
+}

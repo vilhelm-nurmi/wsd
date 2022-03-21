@@ -1,0 +1,16 @@
+{% extends 'base_layout.html'%}
+{% load static from staticfiles %}
+{%block content%}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'javascript/cookie/jquery.cookie.js' %}"></script>
+<script src="{% static 'javascript/play_game.js' %}" type="text/javascript"></script>
+<link rel= "stylesheet" href= "{%static 'css/play_game.css'%}" type="text/css">
+    <div class="gamebox">
+    <h3>{{game.title}}</h3>
+    <iframe class="iram" src="{{game.url}}" id="gamebox1"></iframe>
+    </div>
+    <button class= "btn btn-dark my-2 my-sm-0 float-left" onclick="location.href='highscores'">Highscores</button>
+    <!--
+    <audio control loop autoplay> <source src="http://xn--dka-ula.nu/files/Humps%20-%20Tritonus/1.Bompa.mp3" type="audio/mp3"> </audio>
+      -->
+{%endblock%}

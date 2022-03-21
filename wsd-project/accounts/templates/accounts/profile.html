@@ -1,0 +1,52 @@
+{% extends 'base_layout.html'%}
+{% load static from staticfiles %}
+{% load static %}
+{%block content%}
+<link rel= "stylesheet" href= "{%static 'css/profile.css'%}" type="text/css">
+
+<div class="content">
+  <div class="header">
+    <div class="name_img"><h2>{{user.username}}</h2></div>
+    {% if user.profile_img %}
+    <img class="fb-image-lg" src="{% get_media_prefix %}{{user.profile_img}}" alt="..." >
+    {% else %}
+    <img class="fb-image-lg" src="{% get_media_prefix %}/usr/default.png" alt="..." >
+    {% endif %}
+  </div>
+    <div class="info">
+    {% if user.is_authenticated %}
+      <h2>{{profil.first_name}} {{profil.last_name}}</h2>
+      {% if request.user.username == profil.username %}
+        {% if profil.type == 'P' %}
+      <p>Type of account: Player</p>
+        {% else %}
+          <p>Type of account: Developer</p>
+          <input type="button" onclick="location.href='/games/add';" value="Add game"/>
+        {% endif %}
+        <p>Email: {{profil.email}}</p>
+        <p>Email {% if profil.verified %} is verified {% else %} is not verified. <a href="/profile/{{user.username}}/verify">Click here to verify!</a>{% endif %}</p>
+        <input type="button" class= "btn btn-dark my-2 my-sm-0 "onclick="location.href='{{profil.username}}/change_profile/';" value="Edit profile"/>
+        <input type="button" class= "btn btn-dark my-2 my-sm-0 "onclick="location.href='/change_password';" value="Change password"/>
+        {% if profil.type == 'P' %}
+          <h6>You have purchased these games:</h6>
+          {% for x in profil.get_purchased_games_titles %}
+            <p>{{x}}</p>
+          {% endfor %}
+        {% else %}
+          <h4>You have uploaded these games:</h4>
+          {% for x in profil.purchased_games.all %}
+            <h4>{{x.title}}</h4>
+            <input type="button" onclick="location.href='/games/{{x.slug}}/edit';" value="Edit"/>
+            <form method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              <input type="hidden" name="delete" value= "DELETE">
+              <input type="hidden" name="game" value="{{x.id}}">
+              <input type="submit" value="Delete game"></input>
+              </form>
+          {% endfor %}
+        {% endif %}
+      {% endif %}
+    {% endif %}
+    </div>
+</div>
+{%endblock%}

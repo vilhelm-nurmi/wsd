@@ -1,0 +1,78 @@
+{% extends 'base_layout.html'%}
+{% load static from staticfiles %}
+{% load static %}
+{%block content%}
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<div class="allt">
+
+  <div class="container">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Wrapper for slides -->
+
+
+    <div class="carousel-inner">
+
+      <div class="item active" style="background-image: url('/./static/img/games2.jpg');
+      width: 100%;
+      height: 500px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;">
+        <img src="{%static 'img/games2.jpg'%}"/>
+        <div class="carousel-caption">
+        <h1> Välkommen till Miniclick </h1>
+        <p>--- Albert Tony Vilhelm ---</p>
+        <p>Play games and upload games, sign in or out, we dont really care.</p>
+        </div>
+      </div>
+
+      <div class="item" style="background-image: url('/./static/img/games.jpg');
+      width: 100%;
+      height: 500px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;">
+        <img src="{%static 'img/games.jpg'%}"/>
+        <div class="carousel-caption">
+        <p>Get your games here! Sign up as a devloper and upload your games.</p>
+        <p>Or sign up as a player and just buy games people have uploaded!</p>
+        </div>
+      </div>
+
+      {% for game in games %}
+      <div class="item" style="background-image: url('/./static/img/{{game.game_img}}');
+      width: 100%;
+      height: 500px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;">
+      <img src="{%get_media_prefix%}{{game.game_img}}"/>
+      <div class="carousel-caption">
+        <h1>{{game.title}}</h1>
+        <p>{{game.description}}</p>
+        <p>{{game.price}} €</p>
+        </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+
+
+{%endblock%}

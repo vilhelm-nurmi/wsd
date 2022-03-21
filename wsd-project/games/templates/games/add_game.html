@@ -1,0 +1,11 @@
+{% extends 'base_layout.html'%}
+
+{%block content%}
+<title>Add game</title>
+<h2>Add Game</h2>
+<form method="post" enctype=multipart/form-data>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Add game</button>
+</form>
+{%endblock%}

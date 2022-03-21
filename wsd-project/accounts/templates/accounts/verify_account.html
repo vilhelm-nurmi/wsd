@@ -1,0 +1,40 @@
+{% extends 'base_layout.html'%}
+{% load static from staticfiles %}
+{% load static %}
+{%block content%}
+<link rel= "stylesheet" href= "{%static 'css/verify_account.css'%}" type="text/css">
+<div class="content">
+<title>Verify account</title>
+    <h2>Verify your account</h2>
+    {%if user.email%}
+    <p>Check out your Email for your validation-key</p>
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="flytande-skit ">
+    <form class="form-group" method="post">
+      {% csrf_token %}
+      <input class="mx-auto text-ruta form-control col-10 form-group"type="text" name="code" placeholder="your e-mail">
+      <button class= "mx-auto btn btn-dark my-2 my-sm-0 col-10 form-group" type="submit">Verify account</button><br/>
+    </form>
+    <form class="mx-auto form-group" action="/profile/{{user.username}}/resendemail/" method="post">
+      {%csrf_token%}
+      <button class= " mx-auto btn btn-dark my-2 my-sm-0  col-10 form-group" type="submit">Resend email</button>
+    </form>
+    {%else%}
+    <h4>You have not registered your email. <br>Write your email here!</h4>
+    <form class="mx-auto form-group" action="/profile/{{user.username}}/add_email/" method="post">
+      {% csrf_token %}
+      <input type="text" name="change_email" id="change_email"><button type="submit">Add email</button>
+    </form>
+    </div>
+    {%endif%}
+
+  </div>
+</div>
+
+{%endblock%}

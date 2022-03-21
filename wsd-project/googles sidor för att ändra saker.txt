@@ -1,0 +1,3 @@
+https://console.developers.google.com/apis/credentials?project=miniclick&authuser=1&supportedpurview=project
+
+på client_id.json finns alla secretcodes som behövs för att få googles sidor att toima, erasea inte!!

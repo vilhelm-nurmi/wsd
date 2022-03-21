@@ -1,0 +1,16 @@
+{% extends 'base_layout.html'%}
+{% load static from staticfiles %}
+{% load static %}
+{%block content%}
+
+<title>Change profile image</title>
+<h1>Change profile image</h1>
+<div>
+  <h3>Current image:</h3>
+  <img src="{% get_media_prefix %}{{profil.profile_img}}" >
+<form method="post" enctype=multipart/form-data>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class= "btn btn-dark my-2 my-sm-0 " type="submit">Update profile</button>
+</form>
+{% endblock %}

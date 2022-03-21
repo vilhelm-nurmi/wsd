@@ -1,0 +1,12 @@
+{% extends 'base_layout.html'%}
+{% load static from staticfiles %}
+{%block content%}
+<link rel= "stylesheet" href= "{%static 'css/success.css'%}" type="text/css">
+<div class ="container">
+  <div class="content">
+    <h1>Transaction succeeded.</h1>
+    <h2>Click here to return to the game page:</h2>
+    <input class="btn btn-dark my-2 my-sm-0" type="button" onclick="location.href='/games/{{slug}}';" value="Return"/>
+  </div>
+</div>
+{%endblock%}

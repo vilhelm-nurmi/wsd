@@ -1,0 +1,15 @@
+{% extends 'base_layout.html'%}
+{% load static from staticfiles %}
+{%block content%}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'javascript/cookie/jquery.cookie.js' %}"></script>
+
+<body>
+    <div class="info">
+      <h1>Stats for {{game.title}}:</h1>
+      <h3>Uploaded by: {{game.uploader.username}}</h3>
+      <h3>Times played: {{game.times_played}}</h3>
+      <h3>Times sold: {{sold}}</h3>
+      </div>
+</body>
+{%endblock%}

@@ -1,0 +1,12 @@
+{% extends 'base_layout.html'%}
+{% load static from staticfiles %}
+{%block content%}
+<body>
+<h1>Transaction failed du to an error.</h1>
+<h2>Click here to return to the game page:</h2>
+<input type="button" onclick="location.href='/games/{{slug}}';" value="Return"/>
+</body>
+
+
+
+{%endblock%}

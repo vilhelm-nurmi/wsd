@@ -1,0 +1,24 @@
+{% extends 'base_layout.html'%}
+{% load static from staticfiles %}
+{% load static %}
+{%block content%}
+<div class="container">
+<link rel= "stylesheet" href= "{%static 'css/toplist.css'%}">
+<title>toplist</title>
+  <div class="content">
+    <h1> Top-list</h1>
+    <p>This page shows the current Top-list for  the most popular games</p>
+      {% for game in games%}
+      <div class="onegame center-block" onclick="location.href='/games/'+'{{game.slug}}';">
+        &nbsp;
+          <h3>{{game.title}}</h3>
+          <br>
+          <h4>Times played:{{game.times_played}}</h4>
+          <img class ="imgthumbnail" src="{% get_media_prefix %}{{game.game_img}}" style = "height:200px; width:200px;">
+          <p>{{game.description}}</p>
+      </div>
+      {%endfor%}
+    </div>
+  </div>
+</div>
+{%endblock%}

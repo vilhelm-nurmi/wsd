@@ -1,0 +1,18 @@
+
+.content{
+  min-height:80vh;
+  text-align: center;
+  border-radius: 10pt;
+  padding:0pt 100pt 50pt 100pt;
+
+}
+.onegame{
+  margin:10pt;
+  min-height:200pt;
+  max-height:auto;
+  border-style:solid;
+  border-width:2pt;
+  border-radius:5pt;
+  border-color:grey;
+  background:#D3D3D3;
+}

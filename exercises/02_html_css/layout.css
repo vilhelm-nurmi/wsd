@@ -1,0 +1,32 @@
+#header{
+	overflow: auto;
+}
+
+#navigation li{
+	float: left;
+	padding: 0.5em;
+	list-style-type: none;
+	vertical-align: middle;
+}
+
+#content{
+	float: left;
+	width: 75%;
+	margin: 0 1%;
+	display:block;
+	
+}
+
+#aside {
+	float: right;
+	width: 20%;
+	display: block;
+	margin: 0 1%
+}
+
+#footer{
+	float: left;
+	clear: both;
+	width: 100%;
+	text-align: center;
+}

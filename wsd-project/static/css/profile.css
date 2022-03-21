@@ -1,0 +1,43 @@
+.content{
+  background: #dfe3ee;
+  min-height: 80vh;
+  max-height: auto;
+  clear:both;
+  border-radius:5pt;
+}
+.header{
+  margin:10pt;
+  float:left;
+  width:46%;
+  min-height:200pt;
+  max-height:auto;
+  border-style:solid;
+  border-width:2pt;
+  border-radius:5pt;
+  border-color:grey;
+}
+.name_img {
+  margin-top:20pt;
+  margin-right:40pt;
+  float:right;
+}
+.fb-image-lg{
+  width:20%;
+  margin:20pt;
+  float:left;
+  max-height: 20vh;
+  max-width: 20vh;
+}
+
+.info {
+  margin:10pt;
+  float:right;
+  width:46%;
+  min-height:200pt;
+  max-height:auto;
+  border-style:solid;
+  border-width:2pt;
+  border-radius:5pt;
+  border-color:grey;
+  padding:20pt;
+}
